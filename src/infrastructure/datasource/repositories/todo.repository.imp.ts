@@ -1,5 +1,5 @@
 import {
-  CreatedTodoDto,
+  CreateTodoDto,
   TodoDatasource,
   TodoEntity,
   TodoRepository,
@@ -9,13 +9,13 @@ import {
 export class TodoRepositoryImpl implements TodoRepository {
   constructor(private readonly datasource: TodoDatasource) {}
 
-  create(createTodoDto: CreatedTodoDto): Promise<TodoEntity> {
+  create(createTodoDto: CreateTodoDto): Promise<TodoEntity> {
     return this.datasource.create(createTodoDto);
   }
   getAll(): Promise<TodoEntity[]> {
     return this.datasource.getAll();
   }
-  findById(id: number): Promise<TodoEntity | undefined> {
+  findById(id: number): Promise<TodoEntity> {
     return this.datasource.findById(id);
   }
   updateById(updateTodoDto: UpdateTodoDto): Promise<TodoEntity> {

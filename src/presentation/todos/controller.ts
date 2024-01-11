@@ -1,6 +1,6 @@
 import { Response, Request } from "express";
 import { prisma } from "../../data/postgres";
-import { CreatedTodoDto, UpdateTodoDto } from "../../domain/dtos";
+import { CreateTodoDto, UpdateTodoDto } from "../../domain/dtos";
 import { TodoRepository } from "../../domain";
 
 export class TodosController {
@@ -25,7 +25,7 @@ export class TodosController {
   };
 
   public createTodo = async (req: Request, res: Response) => {
-    const [error, createTodoDto] = CreatedTodoDto.create(req.body);
+    const [error, createTodoDto] = CreateTodoDto.create(req.body);
     if (error)
       return res.status(400).json({
         error,
